@@ -19,10 +19,10 @@ const Addresses = lazy(() => import("../pages/Admin/Addresses/Addresses"));
 const Dashboard = lazy(() => import("../pages/Admin/Dashboard/Dashboard"));
 const Admins = lazy(() => import("../pages/Admin/Admins/Admins"));
 const Profile = lazy(() => import("../pages/Admin/Profile/Profile")); 
-// export const BASE_URL =
-//   "https://dreamcloud-backend-e4327b791528.herokuapp.com/";
+export const BASE_URL =
+  "https://dreamcloud-backend-e4327b791528.herokuapp.com/";
 
-export const BASE_URL = "http://localhost:3000/";
+// export const BASE_URL = "http://localhost:3000/";
 export const features = [
   {
     id: 1,
