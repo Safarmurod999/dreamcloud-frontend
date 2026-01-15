@@ -10,11 +10,12 @@
   display: none;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
   transition: 0.5s;
   &__form {
     position: relative;
     width: 440px;
-    padding: 40px;
+    padding:20px 40px;
     border: 1px solid #c7dff5;
     background: #f6fbff;
     @media screen and (max-width: 576px) {
@@ -30,7 +31,7 @@
       font-style: normal;
       font-weight: 700;
       line-height: normal;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
     &--label {
       color: var(--primary-color, #01384d);
@@ -52,7 +53,7 @@
     &--name,
     &--mobile_phone,
     &--select {
-      padding: 20px;
+      padding: 10px;
       border-radius: 5px;
       border: 2px solid var(--primary-color, #01384d);
       background: #fff;
@@ -77,19 +78,18 @@
         outline: none;
       }
       span {
-        font-family: "Raleway";
         font-size: 16px;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
-        padding: 20px;
+        padding: 10px;
         background-color: var(--primary-color);
         color: var(--color-7);
       }
       input {
         width: 100%;
         height: 100%;
-        padding: 0 20px;
+        padding: 0 10px;
         color: var(--primary-color, #01384d);
         font-family: "Raleway";
         font-size: 16px;
@@ -136,7 +136,7 @@
       justify-content: space-between;
       border: 2px solid var(--primary-color, #01384d);
       background-color: var(--color-5);
-      margin-bottom: 50px;
+      margin-bottom: 20px;
       margin-top: 15px;
     }
     &--amount {
@@ -146,7 +146,7 @@
     }
     &--btn {
       width: 25%;
-      padding: 16px 30px;
+      padding: 7px 30px;
       border-left: 2px solid var(--primary-color, #01384d);
       border-right: 2px solid var(--primary-color, #01384d);
     }

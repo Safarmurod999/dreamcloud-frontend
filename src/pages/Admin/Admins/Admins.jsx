@@ -40,15 +40,17 @@ const Admins = () => {
   const error = useSelector((state) => state.data.error);
 
   const deleteAdmin = (id) => {
-    dispatch(deleteData({ apiEndpoint: "admin", id }));
-    toast.error("Admin o'chirildi");
+    dispatch(deleteData({ apiEndpoint: "admin", id })).then(() => {
+      toast.error("Admin o'chirildi");
+    });
   };
 
   const updateAdmin = (data, id) => {
     let newData = { isSuperAdmin: data };
-    dispatch(updateData({ apiEndpoint: "admin", id, newData, accessToken }));
+    dispatch(updateData({ apiEndpoint: "admin", id, newData, accessToken })).then(() => {
+      toast.success("Ma'lumot muvaffaqiyatli o'zgartirildi!");
+    });
     localStorage.setItem("isSuperAdmin", JSON.stringify(newData.isSuperAdmin));
-    toast.success("Ma'lumot muvaffaqiyatli o'zgartirildi!");
   };
 
   if (isLoading) {

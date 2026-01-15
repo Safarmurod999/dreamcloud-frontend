@@ -86,7 +86,7 @@ const dataSlice = createSlice({
         state.error = null;
       })
       .addCase(addData.fulfilled, (state, action) => {
-        state.data.data.push(action.payload.data[0]);
+        state.data.data.push(action.payload.data);
       })
       .addCase(addData.rejected, (state, action) => {
         state.error = action.payload;
@@ -95,12 +95,14 @@ const dataSlice = createSlice({
         state.error = null;
       })
       .addCase(updateData.fulfilled, (state, action) => {
+        console.log(action.payload);
+
         const index = state.data.data.findIndex(
-          (item) => item.id === action.payload.data[0].id
+          (item) => item.id === action.payload.data.id
         );
         if (index !== -1) {
-          console.log(action.payload.data[0]);
-          state.data.data[index] = action.payload.data[0];
+          console.log(action.payload.data);
+          state.data.data[index] = action.payload.data;
         }
       })
       .addCase(updateData.rejected, (state, action) => {
@@ -121,4 +123,4 @@ const dataSlice = createSlice({
 });
 
 export default dataSlice.reducer;
-export const {} = dataSlice.actions;
+export const { } = dataSlice.actions;

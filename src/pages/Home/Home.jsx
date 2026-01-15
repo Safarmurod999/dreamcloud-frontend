@@ -4,8 +4,6 @@ import Button from "../../components/Button/Button";
 import arrow from "../../assets/icons/arrow.svg";
 import range from "../../assets/icons/range.svg";
 import bed from "../../assets/images/home/home-main.png";
-import play_btn from "../../assets/icons/play-btn.svg";
-import pause from "../../assets/icons/pause.svg";
 import video from "../../assets/videos/about-video.mp4";
 import showroom from "../../assets/images/home/showroom.png";
 import geolocation from "../../assets/icons/geolocation.svg";
@@ -16,7 +14,7 @@ import AddressModal from "../../components/AddressModal/AddressModal";
 import { postData } from "../../utils/postData";
 import BackTop from "../../components/BackTop/BackTop";
 import OrderModal from "../../components/OrderModal/OrderModal";
-import { features } from "../../data/data";
+import { BASE_URL, features } from "../../data/data";
 import "./Home.scss";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -212,7 +210,7 @@ function Home() {
                       <div className="technologies--card--title">{el.name}</div>
                       <div className="w-full flex items-center justify-center relative">
                         <video
-                          src={`https://dreamcloud-backend-e4327b791528.herokuapp.com/uploads/technologies/${el.video}`}
+                          src={`${BASE_URL}uploads/technologies/${el.video}`}
                           className="technologies--card--video video"
                           id={el.id}
                         ></video>
@@ -317,7 +315,7 @@ function Home() {
               {features.map((el) => {
                 return (
                   <li key={el.id} className="advantages__row--item">
-                    <img src={el.image} alt={el.image} />
+                    <img src={el?.image} alt={el?.image} />
                     <div>{el.title}</div>
                     <p>{el.description}</p>
                   </li>
@@ -331,16 +329,15 @@ function Home() {
             <div className="address__left">
               <div className="address__title title">Manzilimiz</div>
               <img
-                src={`https://dreamcloud-backend-e4327b791528.herokuapp.com/uploads/addresses/${addresses.data[0].image}`}
+                src={`https://dreamcloud-bac/uploads/addresses/${addresses.data[0]?.image}`}
                 alt={address_img}
                 className="address__left--img"
               />
-              <h4 className="address--location">{addresses.data[0].address}</h4>
-
+              <h4 className="address--location">{addresses.data[0]?.address}</h4>
               <p className="address--destination text">
-                {addresses.data[0].descrtiption}
+                {addresses.data[0]?.descrtiption}
               </p>
-              <AddressModal src={addresses.data[0].location} />
+              <AddressModal src={addresses.data[0]?.location} />
               <Button
                 title={"Geolokatsiya"}
                 src={geolocation}
@@ -349,7 +346,7 @@ function Home() {
             </div>
             <div className="address__right">
               <img
-                src={`https://dreamcloud-backend-e4327b791528.herokuapp.com/uploads/addresses/${addresses.data[0].image}`}
+                src={`${BASE_URL}uploads/addresses/${addresses.data[0]?.image}`}
                 alt={address_img}
               />
             </div>

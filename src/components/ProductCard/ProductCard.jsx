@@ -2,6 +2,7 @@ import "./ProductCard.scss";
 import cart from "../../assets/icons/shopping_cart.svg";
 import Button from "../Button/Button";
 import Fancybox from "../Fancybox/Fancybox";
+import { BASE_URL } from "../../data/data";
 function ProductCard({
   id,
   image,
@@ -41,11 +42,11 @@ function ProductCard({
           {" "}
           <a
             data-fancybox="photo"
-            data-download-src={`https://dreamcloud-backend-e4327b791528.herokuapp.com/uploads/products/${image}`}
-            href={`https://dreamcloud-backend-e4327b791528.herokuapp.com/uploads/products/${image}`}
+            data-download-src={`${BASE_URL}uploads/products/${image}`}
+            href={`${BASE_URL}uploads/products/${image}`}
           >
             <img
-              src={`https://dreamcloud-backend-e4327b791528.herokuapp.com/uploads/products/${image}`}
+              src={`${BASE_URL}uploads/products/${image}`}
               alt={image}
             />
           </a>
@@ -54,7 +55,7 @@ function ProductCard({
       <div className="card--content">
         <div className="card--title title">{product_name}</div>
         <img
-          src={`https://dreamcloud-backend-e4327b791528.herokuapp.com/uploads/products/${image}`}
+          src={`${BASE_URL}uploads/products/${image}`}
           alt={image}
           className="card--img--mobile"
         />
@@ -95,7 +96,7 @@ function ProductCard({
         </h6>
         <Button
           callback={() => orderControl(id)}
-          title={"Buyurtna berish"}
+          title={"Buyurtma berish"}
           src={cart}
         />
       </div>

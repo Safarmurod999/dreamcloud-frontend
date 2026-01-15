@@ -10,8 +10,6 @@ import { Spinner } from "./components";
 const Home = lazy(() => import("./pages/Home/Home"));
 function App() {
   const route = useLocation();
-  const isSuperAdmin =
-    JSON.parse(localStorage.getItem("isSuperAdmin")) || false;
   return (
     <>
       {route.pathname == "/" ? (

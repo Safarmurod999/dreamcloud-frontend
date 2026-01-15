@@ -33,8 +33,9 @@ const Profile = () => {
     if (data.username) {
       localStorage.setItem("username", JSON.stringify(data.username));
     }
-    dispatch(updateData({ apiEndpoint: `admin`, id, newData, accessToken }));
-    toast.success("Admin muvaffaqiyatli o'zgartirildi!");
+    dispatch(updateData({ apiEndpoint: `admin`, id, newData, accessToken })).then(() => {
+      toast.success("Admin muvaffaqiyatli o'zgartirildi!");
+    });
   };
 
   if (isLoading) {

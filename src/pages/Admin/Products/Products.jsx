@@ -6,7 +6,6 @@ import { deleteData, fetchData, updateData } from "../../../utils/slice";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Breadcrumb,
-  Button,
   Pagination,
   Table,
   TableBody,
@@ -53,14 +52,16 @@ const Products = () => {
   }, [dispatch, currentPage]);
 
   const deleteProduct = (id) => {
-    dispatch(deleteData({ apiEndpoint: "products", id }));
-    toast.error("Mahsulot o'chirildi");
+    dispatch(deleteData({ apiEndpoint: "products", id })).then(() => {
+      toast.error("Mahsulot o'chirildi");
+    });
   };
 
   const updateProduct = (data, id) => {
     let newData = { status: data };
-    dispatch(updateData({ apiEndpoint: "products", id, newData, accessToken }));
-    toast.success("Mahsulot muvaffaqiyatli o'zgartirildi!");
+    dispatch(updateData({ apiEndpoint: "products", id, newData, accessToken })).then(() => {
+      toast.success("Mahsulot muvaffaqiyatli o'zgartirildi!");
+    });
   };
 
   if (isLoading || loading) {

@@ -33,16 +33,18 @@ const Categories = () => {
   }, [dispatch, currentPage]);
 
   const deleteCategory = (id) => {
-    dispatch(deleteData({ apiEndpoint: "categories", id }));
-    toast.error("Kategoriya o'chirildi");
+    dispatch(deleteData({ apiEndpoint: "categories", id })).then(() => {
+      toast.error("Kategoriya o'chirildi");
+    });
   };
 
   const updateCategory = (data, id) => {
     let newData = { isActive: data };
     dispatch(
       updateData({ apiEndpoint: "categories", id, newData, accessToken })
-    );
-    toast.success("Kategoriya muvaffaqiyatli o'zgartirildi!");
+    ).then(() => {
+      toast.success("Kategoriya muvaffaqiyatli o'zgartirildi!");
+    });
   };
   if (isLoading) {
     return <Spinner position={"relative"} />;

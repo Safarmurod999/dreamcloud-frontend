@@ -11,7 +11,6 @@ import { BsPlus } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
 
 const Addresses = () => {
-  let accessToken = JSON.parse(localStorage.getItem("access_token")) || "";
   const [address, setAddress] = useState({
     address: "",
     description: "",
@@ -38,8 +37,9 @@ const Addresses = () => {
   }, [dispatch, currentPage]);
 
   const deleteAddress = (id) => {
-    dispatch(deleteData({ apiEndpoint: "addresses", id }));
-    toast.error("Manzil o'chirildi");
+    dispatch(deleteData({ apiEndpoint: "addresses", id })).then(() => {
+      toast.error("Manzil o'chirildi");
+    });
   };
 
   if (isLoading) {

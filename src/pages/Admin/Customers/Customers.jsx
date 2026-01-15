@@ -36,14 +36,16 @@ const Customers = () => {
   }, [dispatch, currentPage]);
 
   const deleteCustomer = (id) => {
-    dispatch(deleteData({ apiEndpoint: "orders", id }));
-    toast.error("Mijoz o'chirildi");
+    dispatch(deleteData({ apiEndpoint: "orders", id })).then(() => {
+      toast.error("Mijoz o'chirildi");
+    });
   };
 
   const updateCustomer = (data, id) => {
     let newData = { recall: data };
-    dispatch(updateData({ apiEndpoint: "orders", id, newData, accessToken }));
-    toast.success("Ma'lumot muvaffaqiyatli o'zgartirildi!");
+    dispatch(updateData({ apiEndpoint: "orders", id, newData, accessToken })).then(() => {
+      toast.success("Ma'lumot muvaffaqiyatli o'zgartirildi!");
+    });
   };
 
   if (isLoading) {
@@ -141,7 +143,7 @@ const Customers = () => {
             </div>
             <div className="mx-auto flex justify-center mt-3">
               <Pagination
-              className="text-center"
+                className="text-center"
                 layout="table"
                 currentPage={currentPage}
                 totalPages={orders?.pagination?.totalPages}

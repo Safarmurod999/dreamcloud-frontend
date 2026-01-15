@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import Spinner from "../../../components/Spinner/Spinner";
 import { deleteData, fetchData, updateData } from "../../../utils/slice";
@@ -34,17 +34,22 @@ const Technologies = () => {
   const technologies = useSelector((state) => state.data.data);
   const isLoading = useSelector((state) => state.data.isLoading);
   const error = useSelector((state) => state.data.error);
-  let filteredArray = technologies?.data.map((obj) => {
-    let { id, name, video, description } = obj;
-    return { id, name, video, description };
-  });
+
+  let filteredArray = [];
+  if (technologies && technologies.data) {    
+    filteredArray = technologies?.data.map((obj) => {
+      let { id, name, video, description } = obj;
+      return { id, name, video, description };
+    });
+  }
   useEffect(() => {
     dispatch(fetchData(`technologies?page=${currentPage}&limit=8`));
   }, [dispatch, currentPage]);
 
   const deleteTechnology = (id) => {
-    dispatch(deleteData({ apiEndpoint: "technologies", id }));
-    toast.error("Texnologiya o'chirildi");
+    dispatch(deleteData({ apiEndpoint: "technologies", id })).then(() => {
+      toast.error("Texnologiya o'chirildi");
+    });
   };
 
   if (isLoading) {
